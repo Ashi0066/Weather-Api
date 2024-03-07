@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import {
+  city1,
+  city2,
   generateDublinWeatherData,
   generateLondonWeatherData,
+  londonThreeDay,
 } from "../services/weatherService.js";
-import { validationResult } from "express-validator";
 
 /**
  * Gets the weather data for a city
@@ -11,16 +13,6 @@ import { validationResult } from "express-validator";
  * @param res the response object
  */
 export const getWeatherData = async (req: Request, res: Response) => {
-  // We will use the validationResult function to check if there are any validation errors
-  const errors = validationResult(req);
-
-  // If there are validation errors, we will log them and send a 400 status code
-  if (!errors.isEmpty()) {
-    console.error("Validation error", errors.mapped());
-    res.status(400).json({ errors: errors.array() });
-    return;
-  }
-
   // We will use a try catch block to catch any errors
   try {
     // Get the city param from the request
@@ -29,6 +21,7 @@ export const getWeatherData = async (req: Request, res: Response) => {
 
     // We will create a variable with a type of WeatherData
     let finalWeatherData: WeatherData;
+    
 
     // We will use an if statement to check which city was passed in
     if (city === "london") {
@@ -36,7 +29,10 @@ export const getWeatherData = async (req: Request, res: Response) => {
       finalWeatherData = generateLondonWeatherData();
     } else if (city === "dublin") {
       finalWeatherData = generateDublinWeatherData();
-    } else {
+    }else if (city === "city1") {
+      finalWeatherData = city1();
+    } else if(city==="city2"){finalWeatherData =city2();
+    }else {
       // If the city is not london or dublin, we will throw an error
       res.status(404).send("City not found");
     }
@@ -48,3 +44,27 @@ export const getWeatherData = async (req: Request, res: Response) => {
     res.status(500).send("Error in fetching weather data");
   }
 };
+
+
+export const  getforecastData = async (req:Request,res:Response) =>
+{
+  try{
+    const {city}= req.params;
+    console.log(city);
+
+
+    let finalforecastData : forecast;
+
+    if(city==="london")
+    {
+      console.log(londonThreeDay());
+      finalforecastData = londonThreeDay();
+
+   }else{
+    res.status(404).send ("city not foundd ")
+   } 
+
+   res.status(200).json(finalforecastData)
+ }
+ catch(error){res.status(500).send("Error in getting forecast data ")}
+}
