@@ -5,7 +5,7 @@ import algosdk from "algosdk";
  const server: string = "http://localhost";
  const port: string = "4001";
  const mnemonic: string =
- "cat expand depart answer midnight oval size rifle negative cancel mean false manual bench enforce agent spider narrow amazing lift perfect park snake able slam";
+ "problem junk arrow treat skull yard inherit rent absorb vintage nerve crush awake cram this narrow father jacket purity budget loud seat require above illness";
  export function getClient(): algosdk.Algodv2 {
  let client = new algosdk.Algodv2(algodToken, server, port);
  return client;
