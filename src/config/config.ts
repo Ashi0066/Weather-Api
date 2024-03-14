@@ -1,3 +1,4 @@
+
 import algosdk from "algosdk";
  
  const algodToken = "a".repeat(64);
@@ -13,3 +14,6 @@ import algosdk from "algosdk";
  let account = algosdk.mnemonicToSecretKey(mnemonic);
  return account;
  }
+
+// your config code
+
