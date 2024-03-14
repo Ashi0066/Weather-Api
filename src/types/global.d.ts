@@ -1,4 +1,7 @@
+import { Stream } from "stream";
+
 interface WeatherData {
+  city:String;
   temperature: number;
   humidity: number;
   wind: number;
@@ -10,5 +13,6 @@ interface forecast{
   dayTwo:number;
   dayThree:number;
 }
+
 
 

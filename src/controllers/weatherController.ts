@@ -6,6 +6,7 @@ import {
   generateLondonWeatherData,
   londonThreeDay,
 } from "../services/weatherService.js";
+import { WeatherData, forecast } from "../types/global.js";
 
 /**
  * Gets the weather data for a city
