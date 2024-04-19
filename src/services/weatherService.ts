@@ -1,6 +1,6 @@
 import { faker} from "@faker-js/faker";
-import { WeatherData, forecast } from "../types/global.js";
-import { storeWeatherData } from "../helpers/helpers.js";
+import { SeismicData, WeatherData, forecast } from "../types/global.js";
+import { storeWeatherData,storeSeismicData} from "../helpers/helpers.js";
 
 export const generateLondonWeatherData = (): WeatherData => {
   // Generate random weather data
@@ -29,6 +29,46 @@ export const generateDublinWeatherData = (): WeatherData => {
   // Return weather data
   return generatedWeatherData;
 };
+
+
+
+export const generateSeismicDataLondon = (): SeismicData => {
+  // Generate random seismic data
+  const seismicData: SeismicData = {
+    city:"london",
+    latitude: parseFloat(faker.number.int({ min: -90, max: 90 }).toFixed(6)), // Latitude ranges from -90 to 90 degrees
+    longitude: parseFloat(faker.number.int({ min: -180, max: 180 }).toFixed(6)), // Longitude ranges from -180 to 180 degrees
+    depth: faker.number.int({ min: 1, max: 100 }), // Depth typically ranges from 1 to 100 kilometers
+    magnitude: parseFloat(faker.number.float({ min: 2, max: 8, precision: 0.1 }).toFixed(1)), // Magnitude ranges from 2 to 8
+    eventType: ['earthquake', 'explosion', 'volcanic eruption'][faker.number.int({ min: 0, max: 2 })], // Randomly select an event type
+    date: faker.date.recent(), // Generate a recent date for the seismic event
+  };
+
+  storeSeismicData(seismicData).catch(console.error);
+
+  // Return seismic data
+  return seismicData;
+};
+export const generateSeismicDataDublin = (): SeismicData => {
+  // Generate random seismic data
+  const seismicData: SeismicData = {
+    city:"dublin",
+    latitude: parseFloat(faker.number.int({ min: -90, max: 90 }).toFixed(6)), // Latitude ranges from -90 to 90 degrees
+    longitude: parseFloat(faker.number.int({ min: -180, max: 180 }).toFixed(6)), // Longitude ranges from -180 to 180 degrees
+    depth: faker.number.int({ min: 1, max: 100 }), // Depth typically ranges from 1 to 100 kilometers
+    magnitude: parseFloat(faker.number.float({ min: 2, max: 8, precision: 0.1 }).toFixed(1)), // Magnitude ranges from 2 to 8
+    eventType: ['earthquake', 'explosion', 'volcanic eruption'][faker.number.int({ min: 0, max: 2 })], // Randomly select an event type
+    date: faker.date.recent(), // Generate a recent date for the seismic event
+  };
+
+  storeSeismicData(seismicData).catch(console.error);
+
+  // Return seismic data
+  return seismicData;
+};
+
+
+
 
 export const city1 = (): WeatherData =>{
   const generatedWeatherData : WeatherData =  {
