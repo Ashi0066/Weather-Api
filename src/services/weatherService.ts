@@ -41,7 +41,7 @@ export const generateSeismicDataLondon = (): SeismicData => {
     depth: faker.number.int({ min: 1, max: 100 }), // Depth typically ranges from 1 to 100 kilometers
     magnitude: parseFloat(faker.number.float({ min: 2, max: 8, precision: 0.1 }).toFixed(1)), // Magnitude ranges from 2 to 8
     eventType: ['earthquake', 'explosion', 'volcanic eruption'][faker.number.int({ min: 0, max: 2 })], // Randomly select an event type
-    date: faker.date.recent(), // Generate a recent date for the seismic event
+  
   };
 
   storeSeismicData(seismicData).catch(console.error);
@@ -58,7 +58,7 @@ export const generateSeismicDataDublin = (): SeismicData => {
     depth: faker.number.int({ min: 1, max: 100 }), // Depth typically ranges from 1 to 100 kilometers
     magnitude: parseFloat(faker.number.float({ min: 2, max: 8, precision: 0.1 }).toFixed(1)), // Magnitude ranges from 2 to 8
     eventType: ['earthquake', 'explosion', 'volcanic eruption'][faker.number.int({ min: 0, max: 2 })], // Randomly select an event type
-    date: faker.date.recent(), // Generate a recent date for the seismic event
+   
   };
 
   storeSeismicData(seismicData).catch(console.error);
